@@ -2,8 +2,14 @@ doctype=html
 html
   head
     include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/nav.css')
     link(rel='stylesheet', type='text/css', href='/css/index.css')
     title Express.js + Pug
   body
     include includes/nav.pug
-    h1 This is a pug file
+    section(class='index__grid')
+      each val in routes
+        button(
+          class='index__button' 
+          onclick=`window.location.href='/${val.replace(' ', '')}'`
+        )=val.toUpperCase()

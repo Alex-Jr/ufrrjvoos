@@ -8,12 +8,12 @@ app.set('view engine', 'pug');
 
 app.use(express.static('public')) 
 
-app.get('/test/:id', (req, res) => {
-	res.render('test', req.params);
-});
-
 app.get('/', (req, res) => {
-	res.render('index');
+	const routes = ['equipamentos', 'aeronaves', 'companhias aérea', 'voos', 'passageiros',
+		'países', 'rotas de voos', 'reservas', 'aeroportos', 'uf', 'consultar companhias',
+		'consultar equipamentos', 'consultar clientes', 'consultar voos', 'consultar rotas de voos'];
+	
+	res.render('index', { routes });
 });
 
 app.listen(PORT, () => {

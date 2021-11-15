@@ -1,17 +1,19 @@
-.nav__header {
+.index__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  gap: 2vw 0;
+}
+
+.index__button {
   background: black;
-  padding: 32px;
-  display: flex;
-  align-items: center;
   color: white;
-}
-
-.nav__img {
-  width: 64px;
-}
-
-.nav__title {
-  margin-left: 1%;
-  margin-top: 12px;
-  vertical-align: center;
+  cursor: pointer;
+  font: inherit;
+  outline: inherit;
+  border: 1px solid white;
+  padding: 24px 0px;
+  margin: 0 auto;
+  width: 300px;
+  border-radius: 20px;
+  font-size: large;
 }
