@@ -1,0 +1,54 @@
+.table__title,
+.table {
+  width: 75%;
+  margin: 0 auto;
+}
+
+.table__title {
+  box-sizing:border-box;
+  display: flex;
+  justify-content: space-between;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 16px;
+  font-size: x-large;
+}
+
+.table__title-button {
+  background: black;
+  color: #ffffff;
+  cursor: pointer;
+  font: inherit;
+  outline: inherit;
+  border: 1px solid #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: medium;
+}
+
+.table {
+  border-collapse: collapse;
+}
+
+.table__header,
+.table__cell {
+  border: 1px solid #000000;
+  padding: 16px;
+}
+
+.table__row:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.table__row:hover {
+  background-color: #aaaaaa;
+}
+
+.table__icons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.table__icon {
+  width: 32px;
+}

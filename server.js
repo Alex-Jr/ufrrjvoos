@@ -8,6 +8,24 @@ app.set('view engine', 'pug');
 
 app.use(express.static('public')) 
 
+app.get('/equipamentos', (req, res) => {
+	const equipamentos = [{
+		cod: 1,
+		nome: 'Boeing 777',
+		tipo: 'Avião',
+		qntMotor: 4,
+		qntPassageiros: 300
+	}, {
+		cod: 2,
+		nome: 'Boeing 747',
+		tipo: 'Avião',
+		qntMotor: 2,
+		qntPassageiros: 500
+	}];
+
+	res.render('equipamentos', { equipamentos })
+})
+
 app.get('/', (req, res) => {
 	const routes = ['equipamentos', 'aeronaves', 'companhias aérea', 'voos', 'passageiros',
 		'países', 'rotas de voos', 'reservas', 'aeroportos', 'uf', 'consultar companhias',
