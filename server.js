@@ -6,6 +6,8 @@ const PORT = 8000;
 app.set('views', './views');
 app.set('view engine', 'pug');
 
+app.use(express.static('public')) 
+
 app.get('/test/:id', (req, res) => {
 	res.render('test', req.params);
 });

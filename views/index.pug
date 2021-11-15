@@ -1,6 +1,9 @@
 doctype=html
 html
-	head
-		title Express.js + Pug
-	body
-		h1 This is a pug file
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/index.css')
+    title Express.js + Pug
+  body
+    include includes/nav.pug
+    h1 This is a pug file

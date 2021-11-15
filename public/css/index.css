@@ -1,0 +1,17 @@
+.nav__header {
+  background: black;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.nav__img {
+  width: 64px;
+}
+
+.nav__title {
+  margin-left: 1%;
+  margin-top: 12px;
+  vertical-align: center;
+}
