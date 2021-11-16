@@ -7,7 +7,7 @@ async function get_list(req, res) {
 }
 
 async function get_create (req, res) {
-	res.render('paises-form', { 
+	res.render('paises_form', { 
 		edit: false,
 		pais: null
 	});
@@ -15,7 +15,7 @@ async function get_create (req, res) {
 
 async function get_update (req, res) {
 	const pais = await ITR_PAIS.findByPk(req.params.cod);
-	res.render('paises-form', { 
+	res.render('paises_form', { 
 		edit: true,
 		pais
 	});

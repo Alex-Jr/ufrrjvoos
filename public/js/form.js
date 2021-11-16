@@ -48,6 +48,7 @@ async function save(model, id_field, edit) {
     alert('Erro!');
     return;
   };
+  console.log(values);
 
   window.location.href = `/${model}`;
 }

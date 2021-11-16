@@ -11,5 +11,5 @@ html
       each route in routes
         button(
           class='index__button' 
-          onclick=`window.location.href='/${route.replace(' ', '')}'`
+          onclick=`window.location.href='/${route.replace(' ', '_')}'`
         )=route.toUpperCase()

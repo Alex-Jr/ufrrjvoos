@@ -1,0 +1,67 @@
+doctype=html
+- const title = `${edit ? 'Editar' : 'Criar'} companhias_aereas`
+html
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/nav.css')
+    link(rel='stylesheet', type='text/css', href='/css/form.css')
+    script(src='/js/form.js')
+    title=title
+
+  body
+    include includes/nav.pug
+
+    form(
+      id='form'
+      class='form'
+    )
+      div(class='form__title')
+        text(class='form__title-text')=title
+
+      div(class='form__input-group')
+        label(class='form__input-title') Código
+
+        input(
+          required
+          class='form__input'
+          type='text'
+          name='CD_CMPN_AEREA'
+          disabled=true && edit
+          value=companhia_aerea && companhia_aerea.CD_CMPN_AEREA
+          placeholder='Digite o nome'
+        )
+
+      div(class='form__input-group')
+        label(class='form__input-title') Nome
+
+        input(
+          required
+          class='form__input'
+          type='text',
+          name='NM_CMPN_AEREA',
+          value=companhia_aerea && companhia_aerea.NM_CMPN_AEREA
+          placeholder='Digite o nome'
+        )
+
+      div(class='form__input-group')
+        label(class='form__input-title') Pais
+
+        input(
+          required
+          class='form__input'
+          type='text',
+          name='CD_PAIS',
+          value=companhia_aerea && companhia_aerea.CD_PAIS
+          placeholder='Digite o tipo'
+        )
+
+      div(class='form__buttons')
+        button(
+          class='form_button'
+          onclick='window.history.back()'
+        ) CANCELAR
+
+        button(
+          class='form_button'
+          onclick=`save('companhias_aereas', 'CD_CMPN_AEREA', '${edit}')`
+        ) SALVAR
