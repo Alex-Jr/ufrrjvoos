@@ -5,6 +5,9 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class ITR_EQPT extends Model {
     static associate(models) {
+      ITR_EQPT.hasMany(models.ITR_ARNV, {
+        foreignKey: 'CD_EQPT'
+      })
     }
   };
   ITR_EQPT.init({

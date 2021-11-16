@@ -1,0 +1,70 @@
+doctype=html
+- const title = `${edit ? 'Editar' : 'Criar'} Aeronaves`
+html
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/nav.css')
+    link(rel='stylesheet', type='text/css', href='/css/form.css')
+    script(src='/js/form.js')
+    title=title
+
+  body
+    include includes/nav.pug
+
+    form(
+      id='form'
+      class='form'
+    )
+      div(class='form__title')
+        text(class='form__title-text')=title
+
+      div(class='form__input-group')
+        label(class='form__input-title') Código
+
+        input(
+          required
+          class='form__input'
+          type='text'
+          name='CD_ARNV'
+          disabled=true && edit
+          value=aeronave && aeronave.CD_ARNV
+          placeholder='Digite o nome'
+        )
+
+      div(class='form__input-group')
+        label(class='form__input-title') Equipamento
+
+        select(
+          class='form__input'
+          name='CD_EQPT',
+        )
+          each equipamento in equipamentos
+            option(
+              value=equipamento.CD_EQPT
+              selected=true && (aeronave && aeronave.CD_EQPT === equipamento.CD_EQPT)
+            )=`${equipamento.CD_EQPT} - ${equipamento.NM_EQPT}`
+
+
+      div(class='form__input-group')
+        label(class='form__input-title') Companhia Aérea
+
+        select(
+          class='form__input'
+          name='CD_CMPN_AEREA',
+        )
+          each companhia_aerea in companhias_aereas
+            option(
+              value=companhia_aerea.CD_CMPN_AEREA,
+              selected=true && (aeronave && aeronave.CD_CMPN_AEREA === companhia_aerea.CD_CMPN_AEREA)
+            )=`${companhia_aerea.CD_CMPN_AEREA} - ${companhia_aerea.NM_CMPN_AEREA}`
+
+      div(class='form__buttons')
+        button(
+          class='form_button'
+          onclick='window.history.back()'
+        ) CANCELAR
+
+        button(
+          class='form_button'
+          onclick=`save('aeronaves', 'CD_ARNV', '${edit}')`
+        ) SALVAR

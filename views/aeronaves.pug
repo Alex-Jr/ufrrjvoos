@@ -1,0 +1,39 @@
+doctype=html
+html
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/nav.css')
+    link(rel='stylesheet', type='text/css', href='/css/table.css')
+    script(src='/js/table.js')
+    title Lista de Aeronaves
+  body
+    include includes/nav.pug
+    div(class='table__title')
+      text(class='table__title-text') Lista de Aeronaves
+      button(
+        class='table__title-button'
+        onclick='window.location.href += "/new"'
+      ) NOVA AERONAVE
+    table(class='table')
+      tr(class='table__row')
+        th(class='table__header') CD 
+        th(class='table__header') CD Equipamento
+        th(class='table__header') CD Companhia Aérea
+        th(class='table__header') Ações
+      each aeronave in aeronaves 
+        tr(class='table__row')
+          td(class='table__cell')=aeronave.CD_ARNV
+          td(class='table__cell')=`${aeronave.CD_EQPT} - ${aeronave.ITR_EQPT.NM_EQPT}`
+          td(class='table__cell')=`${aeronave.CD_CMPN_AEREA} - ${aeronave.ITR_CMPN_AEREA.NM_CMPN_AEREA}`
+          td(class='table__cell')
+            div(class='table__icons')
+              img(
+                src='/svg/pencil.svg'
+                class='table__icon'
+                onclick=`window.location.href += "/${aeronave.CD_ARNV}/edit"`
+              )
+              img(
+                src='/svg/trash.svg'
+                class='table__icon'
+                onclick=`remove('aeronaves', '${aeronave.CD_ARNV}')`
+              )
