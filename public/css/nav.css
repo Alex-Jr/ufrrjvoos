@@ -1,10 +1,17 @@
 .nav__header {
   display: flex;
-  align-items: center;
   background: black;
   color: white;
   padding: 32px;
   margin-bottom: 64px;
+}
+
+.nav__link {
+  display: inherit;
+  color: inherit;
+  text-decoration: inherit;
+  justify-content: space-between;
+  width: 300px;
 }
 
 .nav__img {
@@ -12,7 +19,6 @@
 }
 
 .nav__title {
-  vertical-align: center;
   margin-left: 1%;
   margin-top: 12px;
 }
