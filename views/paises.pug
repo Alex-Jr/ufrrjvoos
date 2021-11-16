@@ -4,41 +4,35 @@ html
     include includes/libs.pug
     link(rel='stylesheet', type='text/css', href='/css/nav.css')
     link(rel='stylesheet', type='text/css', href='/css/table.css')
-    title Lista de Equipamentos
+    title Lista de Paises
   body
     include includes/nav.pug
     div(class='table__title')
-      text(class='table__title-text') Lista de Equipamentos
+      text(class='table__title-text') Lista de Paises
       button(
         class='table__title-button'
         onclick='window.location.href += "/new"'
-      ) NOVO EQUIPAMENTO
+      ) NOVO PAISES
     table(class='table')
       tr(class='table__row')
         th(class='table__header') COD 
         th(class='table__header') Nome 
-        th(class='table__header') Tipo 
-        th(class='table__header') QNT Motor 
-        th(class='table__header') Tipo Propulsor
-        th(class='table__header') QNT Passageiros 
+        th(class='table__header') População
         th(class='table__header') Ações
-      each equipamento in equipamentos 
+      each pais in paises 
         tr(class='table__row')
-          td(class='table__cell')=equipamento.CD_EQPT
-          td(class='table__cell')=equipamento.NM_EQPT
-          td(class='table__cell')=equipamento.DC_TIPO_EQPT
-          td(class='table__cell')=equipamento.QT_MOTOR
-          td(class='table__cell')=equipamento.IC_TIPO_PRPS
-          td(class='table__cell')=equipamento.QT_PSGR
+          td(class='table__cell')=pais.CD_PAIS
+          td(class='table__cell')=pais.NM_PAIS
+          td(class='table__cell')=pais.QT_PPLC_PAIS
           td(class='table__cell')
             div(class='table__icons')
               img(
                 src='/svg/pencil.svg'
                 class='table__icon'
-                onclick=`window.location.href += "/${equipamento.CD_EQPT}/edit"`
+                onclick=`window.location.href += "/${pais.CD_PAIS}/edit"`
               )
               img(
                 src='/svg/trash.svg'
                 class='table__icon'
-                onclick=`remove(${equipamento.CD_EQPT})`
+                onclick=`remove(${pais.CD_PAIS})`
               )

@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const { ITR_EQPT } = require('./models');
+const { ITR_EQPT, ITR_PAIS } = require('./models');
 // const { default: connection } = require('./db/connection');
 const app = express();
 const PORT = 8000;
@@ -16,12 +16,16 @@ app.use(cors({
 	origin: '*'
 }));
 
-
 app.get('/equipamentos', async (req, res) => {
 	const equipamentos = await ITR_EQPT.findAll();
-	console.log(equipamentos);
 
-	res.render('equipamentos', { equipamentos: equipamentos });
+	res.render('equipamentos', { equipamentos });
+})
+
+app.get('/paises', async (req, res) => {
+	const paises = await ITR_PAIS.findAll();
+
+	res.render('paises', { paises });
 })
 
 app.get('/', (req, res) => {

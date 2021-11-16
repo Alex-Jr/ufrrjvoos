@@ -7,19 +7,19 @@
 //         primaryKey: true,
 //         type: Sequelize.STRING
 //       },
-//       nm_eqpt: {
+//       NM_EQPT: {
 //         type: Sequelize.STRING
 //       },
-//       dc_tipo_eqpt: {
+//       DC_TIPO_EQPT: {
 //         type: Sequelize.STRING
 //       },
-//       qt_motor: {
+//       QT_MOTOR: {
 //         type: Sequelize.INTEGER
 //       },
-//       ic_tipo_prps: {
+//       IC_TIPO_PRPS: {
 //         type: Sequelize.STRING
 //       },
-//       qt_psgr: {
+//       QT_PSGR: {
 //         type: Sequelize.INTEGER
 //       },
 //     });
