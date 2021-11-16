@@ -22,6 +22,15 @@ app.get('/equipamentos', async (req, res) => {
 	res.render('equipamentos', { equipamentos });
 })
 
+app.delete('/equipamentos/:cod', async (req, res) => {
+	// TODO ERROR HANDLING
+	await ITR_EQPT.destroy({
+		where: { CD_EQPT: req.params.cod }
+	})
+	res.status(200);
+	res.send();
+})
+
 app.get('/paises', async (req, res) => {
 	const paises = await ITR_PAIS.findAll();
 

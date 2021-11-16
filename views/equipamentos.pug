@@ -4,6 +4,7 @@ html
     include includes/libs.pug
     link(rel='stylesheet', type='text/css', href='/css/nav.css')
     link(rel='stylesheet', type='text/css', href='/css/table.css')
+    script(src='/js/table.js')
     title Lista de Equipamentos
   body
     include includes/nav.pug
@@ -40,5 +41,5 @@ html
               img(
                 src='/svg/trash.svg'
                 class='table__icon'
-                onclick=`remove(${equipamento.CD_EQPT})`
+                onclick=`remove('equipamentos', '${equipamento.CD_EQPT}')`
               )
