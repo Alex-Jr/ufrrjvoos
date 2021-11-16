@@ -8,8 +8,8 @@ html
   body
     include includes/nav.pug
     section(class='index__grid')
-      each val in routes
+      each route in routes
         button(
           class='index__button' 
-          onclick=`window.location.href='/${val.replace(' ', '')}'`
-        )=val.toUpperCase()
+          onclick=`window.location.href='/${route.replace(' ', '')}'`
+        )=route.toUpperCase()

@@ -14,28 +14,40 @@ window.addEventListener('load', function () {
 })
 
 async function save(model, id_field, edit) {
-  const form = document.forms.form;
+  const isEdit = edit === 'true'
+  const form = document.forms['form'];
 
   const values = {};
+  const errors = [];
   for (const ipt of form) {
     let name = ipt.name;
     let value = ipt.value;
     if(!name) continue;
     
     if(typeof value === 'string') value = value.toUpperCase()
+    if(!ipt.checkValidity()) errors.push(ipt.validationMessage)
     values[name] = value
   }
 
-  const url = `/${model}` + `${edit ? `/${values[id_field]}` : ''}`;
-  delete values[id_field]
+  if(errors.length > 0) return
+  
 
-  await fetch(url, {
-    method: edit ? 'PATCH': 'POST',
+  const url = `/${model}` + `${isEdit ? `/${values[id_field]}` : ''}`;
+  
+  if(isEdit) delete values[id_field]
+
+  const response = await fetch(url, {
+    method: isEdit ? 'PATCH': 'POST',
     body: JSON.stringify(values),
     headers: {
       'Content-Type': 'application/json'
     }
   })
+
+  if(!response.ok) {
+    alert('Erro!');
+    return;
+  };
 
   window.location.href = `/${model}`;
 }

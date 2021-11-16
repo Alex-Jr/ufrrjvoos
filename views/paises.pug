@@ -4,6 +4,8 @@ html
     include includes/libs.pug
     link(rel='stylesheet', type='text/css', href='/css/nav.css')
     link(rel='stylesheet', type='text/css', href='/css/table.css')
+    script(src='/js/table.js')
+
     title Lista de Paises
   body
     include includes/nav.pug
@@ -34,5 +36,5 @@ html
               img(
                 src='/svg/trash.svg'
                 class='table__icon'
-                onclick=`remove(${pais.CD_PAIS})`
+                onclick=`remove('paises', '${pais.CD_PAIS}')`
               )

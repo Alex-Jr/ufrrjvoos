@@ -1,0 +1,67 @@
+doctype=html
+- const title = `${edit ? 'Editar' : 'Criar'} pais`
+html
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/nav.css')
+    link(rel='stylesheet', type='text/css', href='/css/form.css')
+    script(src='/js/form.js')
+    title=title
+
+  body
+    include includes/nav.pug
+
+    form(
+      id='form'
+      class='form'
+    )
+      div(class='form__title')
+        text(class='form__title-text')=title
+
+      div(class='form__input-group')
+        label(class='form__input-title') Código
+
+        input(
+          required
+          class='form__input'
+          type='text'
+          name='CD_PAIS'
+          disabled=true && edit
+          value=pais && pais.CD_PAIS
+          placeholder='Digite o nome'
+        )
+
+      div(class='form__input-group')
+        label(class='form__input-title') Nome
+
+        input(
+          required
+          class='form__input'
+          type='text',
+          name='NM_PAIS',
+          value=pais && pais.NM_PAIS
+          placeholder='Digite o nome'
+        )
+
+      div(class='form__input-group')
+        label(class='form__input-title') População
+
+        input(
+          required
+          class='form__input'
+          type='number',
+          name='QT_PPLC_PAIS',
+          value=pais && pais.QT_PPLC_PAIS
+          placeholder='Digite a quantidade de motores'
+        )
+
+      div(class='form__buttons')
+        button(
+          class='form_button'
+          onclick='window.history.back()'
+        ) CANCELAR
+
+        button(
+          class='form_button'
+          onclick=`save('paises', 'CD_PAIS', '${edit}')`
+        ) SALVAR
