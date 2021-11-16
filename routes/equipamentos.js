@@ -1,49 +1,17 @@
 const express = require('express');
+const equipamentos = require('../controller/equipamentos');
 const router = express.Router();
-const { ITR_EQPT } = require('../models'); 
 
-router.get('/', async (req, res) => {
-	const equipamentos = await ITR_EQPT.findAll();
+router.get('/', equipamentos.get_list)
 
-	res.render('equipamentos', { equipamentos });
-})
+router.get('/new', equipamentos.get_create), 
 
-router.get('/new', async (req, res) => {
-	res.render('equipamentos-form', { 
-		edit: false,
-		equipamento: null
-	});
-})
+router.get('/:cod/edit', equipamentos.get_update)
 
-router.get('/:cod/edit', async (req, res) => {
-	const equipamento = await ITR_EQPT.findByPk(req.params.cod);
-	res.render('equipamentos-form', { 
-		edit: true,
-		equipamento
-	});
-})
+router.post('/', equipamentos.create);
 
-router.post('/', async (req, res) => {
-	await ITR_EQPT.create(req.body)
+router.patch('/:cod', equipamentos.update);
 
-	res.status(200).send()
-});
-
-router.patch('/:cod', async (req, res) => {
-	await ITR_EQPT.update(req.body, {
-		where: {
-			CD_EQPT: req.params.cod
-		}
-	})
-
-	res.status(200).send()
-});
-
-router.delete('/:cod', async (req, res) => {
-	await ITR_EQPT.destroy({
-		where: { CD_EQPT: req.params.cod }
-	})
-	res.status(200).send();
-});
+router.delete('/:cod', equipamentos.remove);
 
 module.exports = router;
