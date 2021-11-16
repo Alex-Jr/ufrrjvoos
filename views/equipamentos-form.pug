@@ -22,11 +22,12 @@ html
         label(class='form__input-title') Código
 
         input(
+          required
           class='form__input'
           type='text'
           name='CD_EQPT'
           disabled=true && edit
-          required
+          value=equipamento && equipamento.CD_EQPT
           placeholder='Digite o nome'
         )
 
@@ -34,10 +35,11 @@ html
         label(class='form__input-title') Nome
 
         input(
+          required
           class='form__input'
           type='text',
           name='NM_EQPT',
-          required
+          value=equipamento && equipamento.NM_EQPT
           placeholder='Digite o nome'
         )
 
@@ -45,10 +47,11 @@ html
         label(class='form__input-title') Tipo
 
         input(
+          required
           class='form__input'
           type='text',
           name='DC_TIPO_EQPT',
-          required
+          value=equipamento && equipamento.DC_TIPO_EQPT
           placeholder='Digite o tipo'
         )
 
@@ -56,10 +59,11 @@ html
         label(class='form__input-title') QT Motores
 
         input(
+          required
           class='form__input'
           type='number',
           name='QT_MOTOR',
-          required
+          value=equipamento && equipamento.QT_MOTOR
           placeholder='Digite a quantidade de motores'
         )
 
@@ -70,17 +74,24 @@ html
           class='form__input'
           name='IC_TIPO_PRPS'
         )
-          option(value='r') R
-          option(value='d') D
+          option(
+            value='R'
+            selected=true && (equipamento && equipamento.IC_TIPO_PRPS === 'R')
+          ) R
+          option(
+            value='M'
+            selected=true && (equipamento && equipamento.IC_TIPO_PRPS === 'M')
+          ) M
 
       div(class='form__input-group')
         label(class='form__input-title') QT Passageiros
 
         input(
+          required
           class='form__input'
           type='number',
           name='QT_PSGR',
-          required
+          value=equipamento && equipamento.QT_PSGR
           placeholder='Digite a quantidade de passageiros'
         )
 
@@ -92,5 +103,5 @@ html
 
         button(
           class='form_button'
-          onclick=`save('equipamentos', '${edit}')`
+          onclick=`save('equipamentos', 'CD_EQPT', '${edit}')`
         ) SALVAR

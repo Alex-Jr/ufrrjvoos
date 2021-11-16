@@ -25,21 +25,35 @@ app.get('/equipamentos', async (req, res) => {
 app.get('/equipamentos/new', async (req, res) => {
 	res.render('equipamentos-form', { 
 		edit: false,
+		equipamento: null
+	});
+})
+
+app.get('/equipamentos/:cod/edit', async (req, res) => {
+	const equipamento = await ITR_EQPT.findByPk(req.params.cod);
+	res.render('equipamentos-form', { 
+		edit: true,
+		equipamento
 	});
 })
 
 app.post('/equipamentos', async (req, res) => {
-	console.log(req.body)
 	await ITR_EQPT.create(req.body)
 
 	res.status(200).send()
-	// res.render('equipamentos-form', { 
-	// 	edit: false,
-	// });
+});
+
+app.patch('/equipamentos/:cod', async (req, res) => {
+	await ITR_EQPT.update(req.body, {
+		where: {
+			CD_EQPT: req.params.cod
+		}
+	})
+
+	res.status(200).send()
 });
 
 app.delete('/equipamentos/:cod', async (req, res) => {
-	// TODO ERROR HANDLING
 	await ITR_EQPT.destroy({
 		where: { CD_EQPT: req.params.cod }
 	})

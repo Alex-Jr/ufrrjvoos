@@ -13,7 +13,7 @@ window.addEventListener('load', function () {
   }
 })
 
-async function save(model, id, edit) {
+async function save(model, id_field, edit) {
   const form = document.forms.form;
 
   const values = {};
@@ -26,7 +26,8 @@ async function save(model, id, edit) {
     values[name] = value
   }
 
-  const url = `/${model}` + `${edit ? `/${id}` : ''}`;
+  const url = `/${model}` + `${edit ? `/${values[id_field]}` : ''}`;
+  delete values[id_field]
 
   await fetch(url, {
     method: edit ? 'PATCH': 'POST',
