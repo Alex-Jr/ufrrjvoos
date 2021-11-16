@@ -22,20 +22,35 @@ app.get('/equipamentos', async (req, res) => {
 	res.render('equipamentos', { equipamentos });
 })
 
+app.get('/equipamentos/new', async (req, res) => {
+	res.render('equipamentos-form', { 
+		edit: false,
+	});
+})
+
+app.post('/equipamentos', async (req, res) => {
+	console.log(req.body)
+	await ITR_EQPT.create(req.body)
+
+	res.status(200).send()
+	// res.render('equipamentos-form', { 
+	// 	edit: false,
+	// });
+});
+
 app.delete('/equipamentos/:cod', async (req, res) => {
 	// TODO ERROR HANDLING
 	await ITR_EQPT.destroy({
 		where: { CD_EQPT: req.params.cod }
 	})
-	res.status(200);
-	res.send();
-})
+	res.status(200).send();
+});
 
 app.get('/paises', async (req, res) => {
 	const paises = await ITR_PAIS.findAll();
 
 	res.render('paises', { paises });
-})
+});
 
 app.get('/', (req, res) => {
 	const routes = ['equipamentos', 'aeronaves', 'companhias aérea', 'voos', 'passageiros',

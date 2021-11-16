@@ -1,0 +1,96 @@
+doctype=html
+- const title = `${edit ? 'Editar' : 'Criar'} Equipamentos`
+html
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/nav.css')
+    link(rel='stylesheet', type='text/css', href='/css/form.css')
+    script(src='/js/form.js')
+    title=title
+
+  body
+    include includes/nav.pug
+
+    form(
+      id='form'
+      class='form'
+    )
+      div(class='form__title')
+        text(class='form__title-text')=title
+
+      div(class='form__input-group')
+        label(class='form__input-title') Código
+
+        input(
+          class='form__input'
+          type='text'
+          name='CD_EQPT'
+          disabled=true && edit
+          required
+          placeholder='Digite o nome'
+        )
+
+      div(class='form__input-group')
+        label(class='form__input-title') Nome
+
+        input(
+          class='form__input'
+          type='text',
+          name='NM_EQPT',
+          required
+          placeholder='Digite o nome'
+        )
+
+      div(class='form__input-group')
+        label(class='form__input-title') Tipo
+
+        input(
+          class='form__input'
+          type='text',
+          name='DC_TIPO_EQPT',
+          required
+          placeholder='Digite o tipo'
+        )
+
+      div(class='form__input-group')
+        label(class='form__input-title') QT Motores
+
+        input(
+          class='form__input'
+          type='number',
+          name='QT_MOTOR',
+          required
+          placeholder='Digite a quantidade de motores'
+        )
+
+      div(class='form__input-group')
+        label(class='form__input-title') Tipo Propulsor
+
+        select(
+          class='form__input'
+          name='IC_TIPO_PRPS'
+        )
+          option(value='r') R
+          option(value='d') D
+
+      div(class='form__input-group')
+        label(class='form__input-title') QT Passageiros
+
+        input(
+          class='form__input'
+          type='number',
+          name='QT_PSGR',
+          required
+          placeholder='Digite a quantidade de passageiros'
+        )
+
+      div(class='form__buttons')
+        button(
+          class='form_button'
+          onclick='window.history.back()'
+        ) CANCELAR
+
+        button(
+          class='form_button'
+          onclick=`save('equipamentos', '${edit}')`
+        ) SALVAR
