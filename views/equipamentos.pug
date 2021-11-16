@@ -6,7 +6,7 @@ html
     link(rel='stylesheet', type='text/css', href='/css/table.css')
     link(rel='stylesheet', type='text/css', href='/css/equipamentos.css')
     script(src='/js/equipamentos.js')
-    title Express.js + Pug
+    title Lista de Equipamentos
   body
     include includes/nav.pug
     div(class='table__title')
@@ -21,15 +21,17 @@ html
         th(class='table__header') Nome 
         th(class='table__header') Tipo 
         th(class='table__header') QNT Motor 
+        th(class='table__header') Tipo Propulsor
         th(class='table__header') QNT Passageiros 
         th(class='table__header') Ações
       each equipamento in equipamentos 
         tr(class='table__row')
-          td(class='table__cell')=equipamento.cod
-          td(class='table__cell')=equipamento.nome
-          td(class='table__cell')=equipamento.tipo
-          td(class='table__cell')=equipamento.qntMotor
-          td(class='table__cell')=equipamento.qntPassageiros
+          td(class='table__cell')=equipamento.cd_eqpt
+          td(class='table__cell')=equipamento.nm_eqpt
+          td(class='table__cell')=equipamento.dc_tipo_eqpt
+          td(class='table__cell')=equipamento.qt_motor
+          td(class='table__cell')=equipamento.ic_tipo_prps
+          td(class='table__cell')=equipamento.qt_psgr
           td(class='table__cell')
             div(class='table__icons')
               img(

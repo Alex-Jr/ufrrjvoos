@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "manager",
+    "password": "123456789",
+    "database": "ufrrjvoos",
+    "host": "localhost",
+    "port": 6000,
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "manager",
+    "password": "123456789",
+    "database": "ufrrjvoos",
+    "host": "localhost",
+    "port": 6000,
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "manager",
+    "password": "123456789",
+    "database": "ufrrjvoos",
+    "host": "locsalhost",
+    "port": 6000,
+    "dialect": "mysql"
+  }
+}

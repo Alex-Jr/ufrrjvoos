@@ -17,9 +17,11 @@
   },
   "homepage": "https://github.com/Alex-Jr/ufrrjvoos#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mysql": "^2.18.1",
-    "pug": "^3.0.2"
+    "mysql2": "^2.3.3",
+    "pug": "^3.0.2",
+    "sequelize": "^6.9.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

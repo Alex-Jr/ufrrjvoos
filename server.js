@@ -1,4 +1,7 @@
 const express = require('express');
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const { ITR_EQPT } = require('./models');
 // const { default: connection } = require('./db/connection');
 const app = express();
 const PORT = 8000;
@@ -6,24 +9,19 @@ const PORT = 8000;
 app.set('views', './views');
 app.set('view engine', 'pug');
 
-app.use(express.static('public')) 
+app.use(express.static('public'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors({
+	origin: '*'
+}));
 
-app.get('/equipamentos', (req, res) => {
-	const equipamentos = [{
-		cod: 1,
-		nome: 'Boeing 777',
-		tipo: 'Avião',
-		qntMotor: 4,
-		qntPassageiros: 300
-	}, {
-		cod: 2,
-		nome: 'Boeing 747',
-		tipo: 'Avião',
-		qntMotor: 2,
-		qntPassageiros: 500
-	}];
 
-	res.render('equipamentos', { equipamentos })
+app.get('/equipamentos', async (req, res) => {
+	const equipamentos = await ITR_EQPT.findAll();
+	console.log(equipamentos);
+
+	res.render('equipamentos', { equipamentos: equipamentos });
 })
 
 app.get('/', (req, res) => {
