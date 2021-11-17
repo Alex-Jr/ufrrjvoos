@@ -1,0 +1,55 @@
+doctype=html
+- const title = `${edit ? 'Editar' : 'Criar'} UFs`
+html
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/nav.css')
+    link(rel='stylesheet', type='text/css', href='/css/form.css')
+    script(src='/js/form.js')
+    title=title
+
+  body
+    include includes/nav.pug
+
+    form(
+      id='form'
+      class='form'
+    )
+      div(class='form__title')
+        text(class='form__title-text')=title
+
+      div(class='form__input-group')
+        label(class='form__input-title') Sigla
+
+        input(
+          required
+          class='form__input'
+          type='text'
+          name='SG_UF'
+          disabled=true && edit
+          value=uf && uf.SG_UF
+          placeholder='Digite a sigla'
+        )
+
+      div(class='form__input-group')
+        label(class='form__input-title') Nome
+
+        input(
+          required
+          class='form__input'
+          type='text'
+          name='NM_UF'
+          value=uf && uf.NM_UF
+          placeholder='Digite o nome'
+        )
+
+      div(class='form__buttons')
+        button(
+          class='form_button'
+          onclick='window.history.back()'
+        ) CANCELAR
+
+        button(
+          class='form_button'
+          onclick=`save('ufs', 'SG_UF', '${edit}')`
+        ) SALVAR

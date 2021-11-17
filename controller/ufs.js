@@ -1,36 +1,36 @@
-const { ITR_PAIS } = require('../models'); 
+const { ITR_UF } = require('../models'); 
 
 async function get_list(req, res) {
-  const paises = await ITR_PAIS.findAll();
+  const ufs = await ITR_UF.findAll();
 
-  res.render('paises', { paises });
+  res.render('ufs', { ufs });
 }
 
 async function get_create (req, res) {
-	res.render('paises_form', { 
+	res.render('ufs_form', { 
 		edit: false,
-		pais: null
+		uf: null
 	});
 }
 
 async function get_update (req, res) {
-	const pais = await ITR_PAIS.findByPk(req.params.cod);
-	res.render('paises_form', { 
+	const uf = await ITR_UF.findByPk(req.params.cod);
+	res.render('ufs_form', { 
 		edit: true,
-		pais
+		uf
 	});
 }
 
 async function create(req, res) {
-	await ITR_PAIS.create(req.body)
+	await ITR_UF.create(req.body)
 
 	res.status(200).send()
 }
 
 async function update(req, res) {
-	await ITR_PAIS.update(req.body, {
+	await ITR_UF.update(req.body, {
 		where: {
-			CD_PAIS: req.params.cod
+			SG_UF: req.params.cod
 		}
 	})
 
@@ -38,8 +38,8 @@ async function update(req, res) {
 }
 
 async function remove(req, res){
-	await ITR_PAIS.destroy({
-		where: { CD_PAIS: req.params.cod }
+	await ITR_UF.destroy({
+		where: { SG_UF: req.params.cod }
 	})
 	res.status(200).send();
 }

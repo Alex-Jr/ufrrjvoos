@@ -21,12 +21,10 @@ async function get_update (req, res) {
 	});
 }
 
-async function create() {
-  async (req, res) => {
-    await ITR_EQPT.create(req.body)
-  
-    res.status(200).send()
-  }
+async function create(req, res) {
+	await ITR_EQPT.create(req.body)
+
+	res.status(200).send()
 }
 
 async function update(req, res) {

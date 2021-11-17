@@ -1,0 +1,37 @@
+doctype=html
+html
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/nav.css')
+    link(rel='stylesheet', type='text/css', href='/css/table.css')
+    script(src='/js/table.js')
+    title Lista de UFs
+  body
+    include includes/nav.pug
+    div(class='table__title')
+      text(class='table__title-text') Lista de UFs
+      button(
+        class='table__title-button'
+        onclick='window.location.href += "/new"'
+      ) NOVA UF
+    table(class='table')
+      tr(class='table__row')
+        th(class='table__header') Sigla 
+        th(class='table__header') Nome
+        th(class='table__header') Ações
+      each uf in ufs 
+        tr(class='table__row')
+          td(class='table__cell')=uf.SG_UF
+          td(class='table__cell')=uf.NM_UF
+          td(class='table__cell')
+            div(class='table__icons')
+              img(
+                src='/svg/pencil.svg'
+                class='table__icon'
+                onclick=`window.location.href += "/${uf.SG_UF}/edit"`
+              )
+              img(
+                src='/svg/trash.svg'
+                class='table__icon'
+                onclick=`remove('ufs', '${uf.SG_UF}')`
+              )
