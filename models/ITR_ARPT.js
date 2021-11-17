@@ -1,29 +1,38 @@
 'use strict';
+
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
-  class ITR_UF extends Model {
+  class ITR_ARPT extends Model {
     static associate(models) {
-      ITR_UF.hasMany(models.ITR_ARPT, {
+      ITR_ARPT.belongsTo(models.ITR_UF, {
         foreignKey: 'SG_UF'
       });
 
     }
   };
-  ITR_UF.init({
-    SG_UF: {
+  ITR_ARPT.init({
+    CD_ARPT: {
       primaryKey: true,
       type: DataTypes.STRING
     },
-    NM_UF: {
+    CD_PAIS: {
       type: DataTypes.STRING,
+    },
+    SG_UF: {
+      type: DataTypes. STRING,
+      references: 'ITR_ARPT'
+    },
+    NM_CIDD: {
+      type: DataTypes. STRING
     }
   }, {
     sequelize,
-    modelName: 'ITR_UF',
-    tableName: 'ITR_UF',
+    modelName: 'ITR_ARPT',
+    tableName: 'ITR_ARPT',
     timestamps: false,
   });
-  return ITR_UF;
+  return ITR_ARPT;
 };

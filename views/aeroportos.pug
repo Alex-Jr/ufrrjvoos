@@ -1,0 +1,41 @@
+doctype=html
+html
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/nav.css')
+    link(rel='stylesheet', type='text/css', href='/css/table.css')
+    script(src='/js/table.js')
+    title Lista de Aeroportos
+  body
+    include includes/nav.pug
+    div(class='table__title')
+      text(class='table__title-text') Lista de Aeroportos
+      button(
+        class='table__title-button'
+        onclick='window.location.href += "/new"'
+      ) NOVO AEROPORTO
+    table(class='table')
+      tr(class='table__row')
+        th(class='table__header') CD
+        th(class='table__header') PAIS
+        th(class='table__header') UF 
+        th(class='table__header') Cidade
+        th(class='table__header') Ações
+      each aeroporto in aeroportos 
+        tr(class='table__row')
+          td(class='table__cell')=aeroporto.CD_ARPT
+          td(class='table__cell')=aeroporto.CD_PAIS
+          td(class='table__cell')=aeroporto.SG_UF
+          td(class='table__cell')=aeroporto.NM_CIDD
+          td(class='table__cell')
+            div(class='table__icons')
+              img(
+                src='/svg/pencil.svg'
+                class='table__icon'
+                onclick=`window.location.href += "/${aeroporto.CD_ARPT}/edit"`
+              )
+              img(
+                src='/svg/trash.svg'
+                class='table__icon'
+                onclick=`remove('aeroportos', '${aeroporto.CD_ARPT}')`
+              )

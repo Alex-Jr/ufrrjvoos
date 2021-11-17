@@ -1,0 +1,81 @@
+doctype=html
+- const title = `${edit ? 'Editar' : 'Criar'} Aeroportos`
+html
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/nav.css')
+    link(rel='stylesheet', type='text/css', href='/css/form.css')
+    script(src='/js/form.js')
+    title=title
+
+  body
+    include includes/nav.pug
+
+    form(
+      id='form'
+      class='form'
+    )
+      div(class='form__title')
+        text(class='form__title-text')=title
+
+      div(class='form__input-group')
+        label(class='form__input-title') Código
+
+        input(
+          required
+          class='form__input'
+          type='text'
+          name='CD_ARPT'
+          disabled=true && edit
+          value=aeroporto && aeroporto.CD_ARPT
+          placeholder='Digite o código'
+        )
+
+      div(class='form__input-group')
+        label(class='form__input-title') Pais
+
+        select(
+          class='form__input'
+          name='CD_PAIS',
+        )
+          each pais in paises
+            option(
+              value=pais.CD_PAIS
+              selected=true && (aeroporto && aeroporto.CD_PAIS === pais.CD_PAIS)
+            )=`${pais.CD_PAIS} - ${pais.NM_PAIS}`
+      
+      div(class='form__input-group')
+        label(class='form__input-title') UF
+
+        select(
+          class='form__input'
+          name='SG_UF',
+        )
+          each uf in ufs
+            option(
+              value=uf.SG_UF
+              selected=true && (aeroporto && aeroporto.SG_UF === uf.SG_UF)
+            )=`${uf.SG_UF} - ${uf.NM_UF}`
+      
+      div(class='form__input-group')
+        label(class='form__input-title') Cidade
+
+        input(
+          required
+          class='form__input'
+          type='text'
+          name='NM_CIDD'
+          value=aeroporto && aeroporto.NM_CIDD
+          placeholder='Digite a cidade'
+        )
+
+      div(class='form__buttons')
+        button(
+          class='form_button'
+          onclick='window.history.back()'
+        ) CANCELAR
+
+        button(
+          class='form_button'
+          onclick=`save('aeroportos', 'CD_ARPT', '${edit}')`
+        ) SALVAR

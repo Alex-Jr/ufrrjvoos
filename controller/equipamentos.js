@@ -7,7 +7,7 @@ async function get_list(req, res) {
 }
 
 async function get_create (req, res) {
-	res.render('equipamentos-form', { 
+	res.render('equipamentos_form', { 
 		edit: false,
 		equipamento: null
 	});
@@ -15,7 +15,7 @@ async function get_create (req, res) {
 
 async function get_update (req, res) {
 	const equipamento = await ITR_EQPT.findByPk(req.params.cod);
-	res.render('equipamentos-form', { 
+	res.render('equipamentos_form', { 
 		edit: true,
 		equipamento
 	});
