@@ -1,0 +1,88 @@
+doctype=html
+- const title = `${edit ? 'Editar' : 'Criar'} reservas`
+- const voos_unicos = [...new Map(voos.map(item =>[item['NR_VOO'], item])).values()]
+
+html
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/nav.css')
+    link(rel='stylesheet', type='text/css', href='/css/form.css')
+    script(src='/js/form.js')
+    script(src='/js/reservas_form.js')
+    //- passando array de voos pro cliente
+    script(type="text/javascript"). 
+      voos = !{JSON.stringify(voos)};
+    title=title
+
+  body
+    include includes/nav.pug
+
+    form(
+      id='form'
+      class='form'
+    )
+      div(class='form__title')
+        text(class='form__title-text')=title
+
+      div(class='form__input-group')
+        label(class='form__input-title') Passageiro
+
+        input(
+          required
+          class='form__input'
+          type='text'
+          name='CD_PSGR'
+          disabled=true && edit
+          value=reserva && reserva.CD_PSGR
+          placeholder='Digite o número'
+        )
+        
+
+      div(class='form__input-group')
+        label(class='form__input-title') Voos
+
+        select(
+          class='form__input'
+          name='NR_VOO'
+          disabled=true && edit
+          onchange='handleVooSelect(event)'
+        )
+          each voo in voos_unicos
+            option(
+                value=voo.NR_VOO
+                selected=true && (reserva && reserva.NR_VOO === voo.NR_VOO)
+              )=voo.NR_VOO
+
+      div(class='form__input-group')
+        label(class='form__input-title') Data Voo
+
+        select(
+          id='select_data_voo'
+          class='form__input'
+          name='DT_SAIDA_VOO'
+          disabled=true && edit
+        )
+
+      div(class='form__input-group')
+        label(class='form__input-title') Desconto
+
+        input(
+          class='form__input'
+          type='number'
+          data-secondary-type='date'
+          name='PC_DESC_PASG'
+          value=reserva && reserva.PC_DESC_PASG
+          placeholder='Digite o desconto',
+        )
+
+
+      div(class='form__buttons')
+        button(
+          class='form_button'
+          onclick='window.history.back()'
+        ) CANCELAR
+
+        button(
+          class='form_button'
+          onclick=`save('reservas', 'CD_PSGR', '${edit}', '${JSON.stringify(['DT_SAIDA_VOO', 'NR_VOO'])}')`
+        ) SALVAR

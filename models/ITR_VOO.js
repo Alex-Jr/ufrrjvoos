@@ -11,9 +11,9 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'CD_ARNV'
       });
 
-      // ITR_VOO.hasMany(models.ITR_RESV, {
-      //   foreignKey: 'NR_VOO'
-      // });
+      ITR_VOO.hasMany(models.ITR_RESV, {
+        foreignKey: 'NR_VOO'
+      });
 
       ITR_VOO.belongsTo(models.ITR_ROTA_VOO, {
         foreignKey: 'NR_ROTA_VOO'

@@ -1,0 +1,44 @@
+doctype=html
+html
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/nav.css')
+    link(rel='stylesheet', type='text/css', href='/css/table.css')
+    script(src='/js/table.js')
+    title Lista de Reservas
+  body
+    include includes/nav.pug
+
+    div(class='table__title')
+      text(class='table__title-text') Lista de Reservas
+      button(
+        class='table__title-button'
+        onclick='window.location.href += "/new"'
+      ) NOVO RESERVA
+
+    table(class='table')
+      tr(class='table__row')
+        th(class='table__header') Passageiro 
+        th(class='table__header') Voo
+        th(class='table__header') Data
+        th(class='table__header') Desconto
+        th(class='table__header') Ações
+  
+      each reserva in reservas 
+        tr(class='table__row')
+          td(class='table__cell')=reserva.CD_PSGR
+          td(class='table__cell')=reserva.NR_VOO
+          td(class='table__cell')=reserva.DT_SAIDA_VOO
+          td(class='table__cell')=`${reserva.PC_DESC_PASG} %`
+          td(class='table__cell')
+            div(class='table__icons')
+              img(
+                src='/svg/pencil.svg'
+                class='table__icon'
+                onclick=`window.location.href += "/${reserva.CD_PSGR}/edit?NR_VOO=${reserva.NR_VOO}&DT_SAIDA_VOO=${reserva.DT_SAIDA_VOO}"`
+              )
+              img(
+                src='/svg/trash.svg'
+                class='table__icon'
+                onclick=`remove('reservas', '${reserva.CD_PSGR}')`
+              )
