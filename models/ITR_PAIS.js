@@ -7,7 +7,12 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       ITR_PAIS.hasMany(models.ITR_CMPN_AEREA, {
         foreignKey: 'CD_PAIS'
-      })
+      });
+
+      ITR_PAIS.hasMany(models.ITR_PSGR, {
+        foreignKey: 'CD_PAIS'
+      });
+
     }
   };
   ITR_PAIS.init({

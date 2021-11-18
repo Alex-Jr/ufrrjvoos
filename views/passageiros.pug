@@ -1,0 +1,47 @@
+doctype=html
+html
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/nav.css')
+    link(rel='stylesheet', type='text/css', href='/css/table.css')
+    script(src='/js/table.js')
+    title Lista de Passageiros
+  body
+    include includes/nav.pug
+    div(class='table__title')
+      text(class='table__title-text') Lista de Passageiros
+      button(
+        class='table__title-button'
+        onclick='window.location.href += "/new"'
+      ) NOVO PASSAGEIRO
+    table(class='table')
+      tr(class='table__row')
+        th(class='table__header') CD
+        th(class='table__header') Nome 
+        th(class='table__header') Sexo 
+        th(class='table__header') Nascimento
+        th(class='table__header') Pais
+        th(class='table__header') Estado Civil
+        th(class='table__header') Responsável
+        th(class='table__header') Ações
+      each passageiro in passageiros 
+        tr(class='table__row')
+          td(class='table__cell')=passageiro.CD_PSGR
+          td(class='table__cell')=passageiro.NM_PSGR
+          td(class='table__cell')=passageiro.IC_SEXO_PSGR
+          td(class='table__cell')=passageiro.DT_NASC_PSGR
+          td(class='table__cell')=passageiro.CD_PAIS
+          td(class='table__cell')=passageiro.IC_ESTD_CIVIL
+          td(class='table__cell')=passageiro.CD_PSGR_RESP
+          td(class='table__cell')
+            div(class='table__icons')
+              img(
+                src='/svg/pencil.svg'
+                class='table__icon'
+                onclick=`window.location.href += "/${passageiro.CD_PSGR}/edit"`
+              )
+              img(
+                src='/svg/trash.svg'
+                class='table__icon'
+                onclick=`remove('passageiros', '${passageiro.CD_PSGR}')`
+              )
