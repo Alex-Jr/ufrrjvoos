@@ -19,7 +19,9 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.STRING
     },
-    NM_CMPN_AEREA: DataTypes.STRING,
+    NM_CMPN_AEREA: {
+      type: DataTypes.STRING
+    },
     CD_PAIS: { 
       type: DataTypes.STRING,
       references: 'ITR_PAIS'

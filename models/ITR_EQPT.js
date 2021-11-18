@@ -15,11 +15,21 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.STRING
     },
-    NM_EQPT: DataTypes.STRING,
-    DC_TIPO_EQPT: DataTypes.STRING,
-    QT_MOTOR: DataTypes.NUMBER,
-    IC_TIPO_PRPS: DataTypes.STRING,
-    QT_PSGR: DataTypes.NUMBER
+    NM_EQPT: {
+      type: DataTypes.STRING
+    },
+    DC_TIPO_EQPT: {
+      type: DataTypes.STRING
+    },
+    QT_MOTOR: {
+      type: DataTypes.DECIMAL(1, 0)
+    },
+    IC_TIPO_PRPS: {
+      type: DataTypes.STRING
+    },
+    QT_PSGR: {
+      type: DataTypes.DECIMAL(3, 0)
+    },
   }, {
     sequelize,
     modelName: 'ITR_EQPT',

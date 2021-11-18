@@ -13,12 +13,12 @@ window.addEventListener('load', function () {
   }
 })
 
-async function save(model, id_field, edit) {
+async function save(model, id_field, edit, qsParameters) {
   const isEdit = edit === 'true'
   const form = document.forms['form'];
-
   const values = {};
   const errors = [];
+
   for (const ipt of form) {
     let name = ipt.name;
     let value = ipt.value;
@@ -28,11 +28,20 @@ async function save(model, id_field, edit) {
     if(!ipt.checkValidity()) errors.push(ipt.validationMessage)
     values[name] = value
   }
-
-  if(errors.length > 0) return
   
+  if(errors.length > 0) return;
 
-  const url = `/${model}` + `${isEdit ? `/${values[id_field]}` : ''}`;
+  let qs = '';
+  if(qsParameters) {
+    qsParameters = JSON.parse(qsParameters);
+  
+    qsParameters.forEach((qsParameter) => {
+      qs += `${qsParameter}=${values[qsParameter]}&`
+    })
+
+    delete values[qsParameters]
+  }
+  const url = `/${model}${isEdit ? `/${values[id_field]}` : ''}?${qs}`;
   
   if(isEdit) delete values[id_field]
 

@@ -20,8 +20,12 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.STRING
     },
-    NM_PAIS: DataTypes.STRING,
-    QT_PPLC_PAIS: DataTypes.NUMBER
+    NM_PAIS: {
+      type: DataTypes.STRING,
+    },
+    QT_PPLC_PAIS: {
+      type: DataTypes.NUMBER
+    }
   }, {
     sequelize,
     modelName: 'ITR_PAIS',

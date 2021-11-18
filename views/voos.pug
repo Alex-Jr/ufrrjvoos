@@ -1,0 +1,44 @@
+doctype=html
+html
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/nav.css')
+    link(rel='stylesheet', type='text/css', href='/css/table.css')
+    script(src='/js/table.js')
+    title Lista de Voos
+  body
+    include includes/nav.pug
+
+    div(class='table__title')
+      text(class='table__title-text') Lista de Voos
+      button(
+        class='table__title-button'
+        onclick='window.location.href += "/new"'
+      ) NOVO VOO
+
+    table(class='table')
+      tr(class='table__row')
+        th(class='table__header') Número 
+        th(class='table__header') Data de Saída
+        th(class='table__header') Rota de Voo
+        th(class='table__header') Aeronave
+        th(class='table__header') Ações
+  
+      each voo in voos 
+        tr(class='table__row')
+          td(class='table__cell')=voo.NR_VOO
+          td(class='table__cell')=voo.DT_SAIDA_VOO
+          td(class='table__cell')=voo.NR_ROTA_VOO
+          td(class='table__cell')=voo.CD_ARNV
+          td(class='table__cell')
+            div(class='table__icons')
+              img(
+                src='/svg/pencil.svg'
+                class='table__icon'
+                onclick=`window.location.href += "/${voo.NR_VOO}/edit?DT_SAIDA_VOO=${voo.DT_SAIDA_VOO}"`
+              )
+              img(
+                src='/svg/trash.svg'
+                class='table__icon'
+                onclick=`remove('voos', '${voo.NR_VOO}')`
+              )

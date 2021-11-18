@@ -1,0 +1,80 @@
+doctype=html
+- const title = `${edit ? 'Editar' : 'Criar'} Rotas Voos`
+html
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/nav.css')
+    link(rel='stylesheet', type='text/css', href='/css/form.css')
+    script(src='/js/form.js')
+    title=title
+
+  body
+    include includes/nav.pug
+
+    form(
+      id='form'
+      class='form'
+    )
+      div(class='form__title')
+        text(class='form__title-text')=title
+
+      div(class='form__input-group')
+        label(class='form__input-title') Número
+
+        input(
+          required
+          class='form__input'
+          type='number'
+          name='NR_ROTA_VOO'
+          disabled=true && edit
+          value=rota_voo && rota_voo.NR_ROTA_VOO
+          placeholder='Digite o número'
+        )
+
+      div(class='form__input-group')
+        label(class='form__input-title') Aeroporto Origem
+
+        select(
+          class='form__input'
+          name='CD_ARPT_ORIG',
+        )
+          each aeroporto in aeroportos
+            option(
+              value=aeroporto.CD_ARPT
+              selected=true && (rota_voo && rota_voo.CD_ARPT_ORIG === aeroporto.CD_ARPT)
+            )=`${aeroporto.CD_ARPT} - ${aeroporto.NM_CIDD}`
+
+      div(class='form__input-group')
+        label(class='form__input-title') Aeroporto Origem
+
+        select(
+          class='form__input'
+          name='CD_ARPT_DEST',
+        )
+          each aeroporto in aeroportos
+            option(
+              value=aeroporto.CD_ARPT
+              selected=true && (rota_voo && rota_voo.CD_ARPT_DEST === aeroporto.CD_ARPT)
+            )=`${aeroporto.CD_ARPT} - ${aeroporto.NM_CIDD}`
+      
+      div(class='form__input-group')
+        label(class='form__input-title') Valor Passagem
+
+        input(
+          class='form__input'
+          type='number'
+          name='VR_PASG'
+          value=rota_voo && rota_voo.VR_PASG
+          placeholder='Digite o valor da passagem'
+        )
+
+      div(class='form__buttons')
+        button(
+          class='form_button'
+          onclick='window.history.back()'
+        ) CANCELAR
+
+        button(
+          class='form_button'
+          onclick=`save('rotas_voos', 'NR_ROTA_VOO', '${edit}')`
+        ) SALVAR

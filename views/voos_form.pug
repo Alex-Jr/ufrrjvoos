@@ -1,0 +1,87 @@
+doctype=html
+- const title = `${edit ? 'Editar' : 'Criar'} voos`
+html
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/nav.css')
+    link(rel='stylesheet', type='text/css', href='/css/form.css')
+    script(src='/js/form.js')
+    title=title
+
+  body
+    include includes/nav.pug
+
+    form(
+      id='form'
+      class='form'
+    )
+      div(class='form__title')
+        text(class='form__title-text')=title
+
+      div(class='form__input-group')
+        label(class='form__input-title') Número
+
+        input(
+          required
+          class='form__input'
+          type='number'
+          name='NR_VOO'
+          disabled=true && edit
+          value=voo && voo.NR_VOO
+          placeholder='Digite o número'
+        )
+        
+
+      div(class='form__input-group')
+        label(class='form__input-title') Saída
+
+        input(
+          required
+          class='form__input'
+          type='text'
+          data-secondary-type='date'
+          name='DT_SAIDA_VOO'
+          disabled=true && edit
+          value=voo && voo.DT_SAIDA_VOO
+          placeholder='Digite a data de saída'
+          onfocus='(this.type="date")'
+          onblur='{this.type="text"}'
+        )
+
+      div(class='form__input-group')
+        label(class='form__input-title') Rota Voo
+
+        select(
+          class='form__input'
+          name='NR_ROTA_VOO',
+        )
+          each rota_voo in rotas_voos
+            option(
+              value=rota_voo.NR_ROTA_VOO
+              selected=true && (voo && voo.NR_ROTA_VOO === rota_voo.NR_ROTA_VOO)
+            )=`${rota_voo.NR_ROTA_VOO}: ${rota_voo.ITR_ARPT_ORIG.NM_CIDD} -> ${rota_voo.ITR_ARPT_DEST.NM_CIDD}`
+
+      div(class='form__input-group')
+        label(class='form__input-title') Aeronave
+
+        select(
+          class='form__input'
+          name='CD_ARNV',
+        )
+          each aeronave in aeronaves
+            option(
+              value=aeronave.CD_ARNV
+              selected=true && (voo && voo.CD_ARNV === aeronave.CD_ARNV)
+            )=`${aeronave.CD_ARNV} - ${aeronave.ITR_EQPT.NM_EQPT}`
+
+
+      div(class='form__buttons')
+        button(
+          class='form_button'
+          onclick='window.history.back()'
+        ) CANCELAR
+
+        button(
+          class='form_button'
+          onclick=`save('voos', 'NR_VOO', '${edit}', '${JSON.stringify(['DT_SAIDA_VOO'])}')`
+        ) SALVAR
