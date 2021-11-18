@@ -6,8 +6,8 @@ const basename = path.basename(__filename);
 const router = {
   '/': express.Router().get('/', (req, res) => {
     const routes = ['equipamentos', 'aeronaves', 'companhias aereas', 'voos', 'passageiros',
-    'paises', 'rotas voos', 'reservas', 'aeroportos', 'ufs', 'consultar companhias',
-    'consultar equipamentos', 'consultar clientes', 'consultar voos', 'consultar rotas de voos'];
+    'paises', 'rotas voos', 'reservas', 'aeroportos', 'ufs', 'consultas companhias',
+    'consultas equipamentos', 'consultas clientes', 'consultas voos', 'consultas rotas voos'];
   
     res.render('index', { routes });
   })

@@ -1,0 +1,20 @@
+doctype=html
+html
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/nav.css')
+    link(rel='stylesheet', type='text/css', href='/css/table.css')
+    script(src='/js/table.js')
+    script(src='/js/consultas.js')
+    title Lista de Companhias Aereas
+  body
+    div(class='table__title')
+      text(class='table__title-text') Lista de Companhias Aereas
+    table(class='table')
+      tr(class='table__row')
+        th(class='table__header') Nome
+        th(class='table__header') Pais
+      each companhia_aerea in companhias_aereas
+        tr(class='table__row')
+          td(class='table__cell')=companhia_aerea.NM_CMPN_AEREA
+          td(class='table__cell')=companhia_aerea.CD_PAIS

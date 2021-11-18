@@ -1,0 +1,23 @@
+doctype=html
+html
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/nav.css')
+    link(rel='stylesheet', type='text/css', href='/css/table.css')
+    script(src='/js/table.js')
+    script(src='/js/consultas.js')
+    title Lista de Companhias Aereas
+  body
+    div(class='table__title')
+      text(class='table__title-text') Lista de Companhias Aereas
+    table(class='table')
+      tr(class='table__row')
+        th(class='table__header') Companhia
+        th(class='table__header') Aeronave
+        th(class='table__header') Capacidade
+      each companhia_aerea in companhias_aereas
+        each aeronave in companhia_aerea.ITR_ARNVs
+          tr(class='table__row')
+            td(class='table__cell')=companhia_aerea.NM_CMPN_AEREA
+            td(class='table__cell')=aeronave.CD_ARNV
+            td(class='table__cell')=`${Number.parseInt((aeronave.ITR_EQPT.QT_PSGR))   + (companhia_aerea.CD_PAIS === 'US' ? 10 : 0)}`

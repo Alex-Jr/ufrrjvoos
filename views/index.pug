@@ -4,12 +4,19 @@ html
     include includes/libs.pug
     link(rel='stylesheet', type='text/css', href='/css/nav.css')
     link(rel='stylesheet', type='text/css', href='/css/index.css')
+    script(src='/js/index.js')
     title Express.js + Pug
-  body
+  body(id='index')
     include includes/nav.pug
     section(class='index__grid')
       each route in routes
-        button(
-          class='index__button' 
-          onclick=`window.location.href='/${route.replace(' ', '_')}'`
-        )=route.toUpperCase()
+        if route.startsWith('consultas')
+          button(
+            class='index__button' 
+            onclick=`abrirConsultas('${route.replace('consultas ', '').replaceAll(' ', '_')}')`
+          )=route.toUpperCase()
+        else
+            button(
+            class='index__button' 
+            onclick=`window.location.href='/${route.replaceAll(' ', '_')}'`
+          )=route.toUpperCase()

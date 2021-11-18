@@ -1,0 +1,15 @@
+doctype=html
+html
+  head
+    include includes/libs.pug
+    script(src='/js/table.js')
+    title Lista de Companhias Aereas
+  body
+    section(class='consultas-companhias')
+      ol
+        each consulta in consultas
+          li(class='consultas-companhias__option')
+            h4
+              a(
+                href=`/consultas_companhias/${consulta.id}${consulta.tem_filtro ? '/form' : '' }`
+              )=consulta.nome

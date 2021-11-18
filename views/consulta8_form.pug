@@ -1,0 +1,37 @@
+doctype=html
+html
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/consultas_form.css')
+    title=title
+
+  body
+    form(
+      id='form'
+      class='form'
+      method='GET'
+      action='/consultas_companhias/8'
+    )
+      div(class='form__input-group')
+        label(class='form__input-title') Pais
+
+        select(
+          required
+          class='form__input'
+          type='text'
+          name='CD_PAIS'
+        )
+          option(value='null') Nenhum país
+
+          each pais in paises 
+            option(value=pais.CD_PAIS)=pais.CD_PAIS
+
+      div(class='form__buttons')
+        button(
+          class='form_button'
+          onclick='window.history.back()'
+        ) CANCELAR
+
+        button(
+          class='form_button'
+        ) SALVAR
