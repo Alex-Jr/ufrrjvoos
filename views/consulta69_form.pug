@@ -1,0 +1,52 @@
+doctype=html
+html
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/consultas_form.css')
+    script(src='/js/consulta69.js')
+    title=title
+
+  body
+    form(
+      id='form'
+      class='form'
+    )
+
+      div(class='form__input-group')
+        label(class='form__input-title') Partindo de
+
+        select(
+          required
+          class='form__input'
+          type='text'
+          name='NM_CIDD_ORIG'
+        ) 
+          option(value='null') Indiferente
+          each cidade in cidades
+            option(value=cidade)=cidade
+
+      div(class='form__input-group')
+        label(class='form__input-title') Chegando a
+
+        select(
+          required
+          class='form__input'
+          type='text'
+          name='NM_CIDD_DEST'
+        )
+          option(value='null') Indiferente
+          each cidade in cidades
+            option(value=cidade)=cidade
+
+      div(id='consulta69__result')
+
+      div(class='form__buttons')
+        button(
+          class='form_button'
+          onclick='window.history.back()'
+        ) CANCELAR
+
+        button(
+          class='form_button'
+          onclick='consulta69()'
+        ) SALVAR

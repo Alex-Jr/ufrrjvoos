@@ -14,10 +14,10 @@ async function list(req, res) {
     },
     {
       id: 83,
-      nome: 'Companhias em um país',
+      nome: 'Companhias, capacidade de transportes da aeronaves por pais',
     }
   ]
-  res.render('consultas_companhias', { consultas });
+  res.render('consultas', { consultas, destino: 'consultas_companhias' });
 }
 
 

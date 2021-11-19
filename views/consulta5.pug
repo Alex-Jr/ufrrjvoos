@@ -1,0 +1,21 @@
+doctype=html
+html
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/nav.css')
+    link(rel='stylesheet', type='text/css', href='/css/table.css')
+    script(src='/js/table.js')
+    script(src='/js/consultas.js')
+    title Lista de Companhias Aereas
+  body
+    div(class='table__title')
+      text(class='table__title-text') Lista de Companhias Aereas
+    table(class='table')
+      tr(class='table__row')
+        th(class='table__header') Número de voo
+        th(class='table__header') Data de partida 
+      each voo in voos
+        each reserva in voo.ITR_RESVs
+          tr(class='table__row')
+            td(class='table__cell')=voo.NR_VOO
+            td(class='table__cell')=reserva.DT_SAIDA_VOO

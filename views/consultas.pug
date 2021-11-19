@@ -1,0 +1,15 @@
+doctype=html
+html
+  head
+    include includes/libs.pug
+    script(src='/js/table.js')
+    title Lista de consultas
+  body
+    section(class='consultas')
+      ol
+        each consulta in consultas
+          li(class='consultas__option')
+            h4
+              a(
+                href=`/${destino}/${consulta.id}${consulta.tem_filtro ? '/form' : '' }`
+              )=consulta.nome
