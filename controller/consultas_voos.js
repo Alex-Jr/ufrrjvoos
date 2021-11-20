@@ -48,8 +48,6 @@ async function consulta69_form(req, res) {
 }
 
 async function consulta69(req, res) {
-  console.log (req.query.NM_CIDD_ORIG)
-
   const voos = await ITR_VOO.findAll({
     include: [{
       model: ITR_ROTA_VOO,

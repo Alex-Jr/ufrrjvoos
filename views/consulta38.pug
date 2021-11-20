@@ -1,0 +1,19 @@
+doctype=html
+html
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/nav.css')
+    link(rel='stylesheet', type='text/css', href='/css/table.css')
+    script(src='/js/table.js')
+    script(src='/js/consultas.js')
+  body
+    div(class='table__title')
+      text(class='table__title-text') Lista de equipamentos
+    table(class='table')
+      tr(class='table__row')
+        th(class='table__header') Nome
+        th(class='table__header') Tipo
+      each equipamento in equipamentos
+        tr(class='table__row')
+          td(class='table__cell')=equipamento.NM_EQPT
+          td(class='table__cell')=equipamento.DC_TIPO_EQPT

@@ -1,0 +1,69 @@
+doctype=html
+html
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/consultas_form.css')
+    title=title
+
+  body
+    form(
+      id='form'
+      class='form'
+      method='GET'
+      action='/consultas_equipamentos/38'
+    )
+
+      div(class='form__input-group')
+        label(class='form__input-title') Tipo equipamento
+
+        select(
+          required
+          class='form__input'
+          type='text'
+          name='DC_TIPO_EQPT'
+        ) 
+          each equipamento in equipamentos
+            option(value=equipamento.DC_TIPO_EQPT)=equipamento.DC_TIPO_EQPT
+
+        label(class='form__input-title') Não incluir
+
+        input(
+          type="checkbox",
+          name="NAO_INCLUIR")
+
+      div(class='form__input-group')
+        label(class='form__input-title') Operador
+
+        select(
+          required
+          class='form__input'
+          type='text'
+          name='CD_OPERADOR'
+        )
+          option(value='lt') Menor que
+          option(value='lte') Menor ou igual a
+          option(value='eq') Igual a
+          option(value='gte') Maior ou igual a
+          option(value='gt') Maior que
+      
+      div(class='form__input-group')
+        label(class='form__input-title') Quantidade Passageiros
+
+        input(
+          required
+          class='form__input'
+          type='number',
+          name='QT_PSGR',
+          placeholder='Digite a quantidade de passsageiro'
+        )
+
+      div(class='form__buttons')
+        button(
+          class='form_button'
+          onclick='window.history.back()'
+        ) CANCELAR
+
+        button(
+          class='form_button'
+          onclick='consulta69()'
+        ) SALVAR
