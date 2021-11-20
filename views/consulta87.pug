@@ -1,0 +1,29 @@
+doctype=html
+html
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/nav.css')
+    link(rel='stylesheet', type='text/css', href='/css/table.css')
+    script(src='/js/table.js')
+    script(src='/js/consultas.js')
+  body
+    div(class='table__title')
+      text(class='table__title-text') Lista de clientes
+    table(class='table')
+      tr(class='table__row')
+        th(class='table__header') CD
+        th(class='table__header') Nome 
+        th(class='table__header') Sexo 
+        th(class='table__header') Nascimento
+        th(class='table__header') Pais
+        th(class='table__header') Estado Civil
+        th(class='table__header') Responsável
+      each cliente in clientes 
+        tr(class='table__row')
+          td(class='table__cell')=cliente.CD_PSGR
+          td(class='table__cell')=cliente.NM_PSGR
+          td(class='table__cell')=cliente.IC_SEXO_PSGR
+          td(class='table__cell')=cliente.DT_NASC_PSGR
+          td(class='table__cell')=cliente.CD_PAIS
+          td(class='table__cell')=cliente.IC_ESTD_CIVIL
+          td(class='table__cell')=cliente.CD_PSGR_RESP

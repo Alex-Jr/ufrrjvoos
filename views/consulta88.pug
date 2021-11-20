@@ -5,37 +5,20 @@ html
     link(rel='stylesheet', type='text/css', href='/css/nav.css')
     link(rel='stylesheet', type='text/css', href='/css/table.css')
     script(src='/js/table.js')
+    script(src='/js/consultas.js')
     title Lista de Rotas de Voos
   body
-    include includes/nav.pug
     div(class='table__title')
-      text(class='table__title-text') Lista de Rotas de Voos
-      button(
-        class='table__title-button'
-        onclick='window.location.href += "/new"'
-      ) NOVA ROTA VOO
+      text(class='table__title-text') Lista de Companhias Aereas
     table(class='table')
       tr(class='table__row')
         th(class='table__header') Número
         th(class='table__header') Aeroporto Origem 
         th(class='table__header') Aeroporto Destino  
         th(class='table__header') Valor
-        th(class='table__header') Ações
       each rota_voo in rotas_voos
         tr(class='table__row')
           td(class='table__cell')=rota_voo.NR_ROTA_VOO
           td(class='table__cell')=rota_voo.CD_ARPT_ORIG
           td(class='table__cell')=rota_voo.CD_ARPT_DEST
           td(class='table__cell')=rota_voo.VR_PASG
-          td(class='table__cell')
-            div(class='table__icons')
-              img(
-                src='/svg/pencil.svg'
-                class='table__icon'
-                onclick=`window.location.href += "/${rota_voo.NR_ROTA_VOO}/edit"`
-              )
-              img(
-                src='/svg/trash.svg'
-                class='table__icon'
-                onclick=`remove('Rotas de Voos', '${rota_voo.NR_ROTA_VOO}')`
-              )

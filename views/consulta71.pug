@@ -1,0 +1,35 @@
+doctype=html
+html
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/nav.css')
+    link(rel='stylesheet', type='text/css', href='/css/table.css')
+    link(rel='stylesheet', type='text/css', href='/css/consulta71.css')
+    script(src='/js/table.js')
+    script(src='/js/consultas.js')
+    title Lista de Clientes - Solteiros
+
+  body
+    div(class='table__title')
+      text(class='table__title-text') Lista de Clientes - Solteiros
+    div(class='table__div')
+      table(class='table')
+        tr(class='table__row')
+          th(class='table__header') Nome
+          th(class='table__header') Idade
+        each cliente_solteiro in clientes_solteiros
+          tr(class='table__row')
+            td(class='table__cell')=cliente_solteiro.NM_PSGR
+            td(class='table__cell')=cliente_solteiro.DT_NASC_PSGR
+
+    div(class='table__title')
+      text(class='table__title-text') Lista de Clientes - Outros
+    div(class='table__div')
+      table(class='table')
+        tr(class='table__row')
+          th(class='table__header') Nome
+          th(class='table__header') Data Nascimento
+        each cliente_outro in clientes_outros
+          tr(class='table__row')
+            td(class='table__cell')=cliente_outro.NM_PSGR
+            td(class='table__cell')=cliente_outro.DT_NASC_PSGR
