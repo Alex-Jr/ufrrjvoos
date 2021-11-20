@@ -16,6 +16,12 @@ html
             onclick=`abrirConsultas('${route.replace('consultas ', '').replaceAll(' ', '_')}')`
           )=route.toUpperCase()
         else
+          if route.startsWith('realizar')
+            button(
+              class='index__button' 
+              onclick=`abrirRealizar('${route.replace('realizar ', '').replaceAll(' ', '_')}')`
+            )=route.toUpperCase()
+          else
             button(
             class='index__button' 
             onclick=`window.location.href='/${route.replaceAll(' ', '_')}'`

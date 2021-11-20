@@ -1,0 +1,147 @@
+doctype=html
+- const estados_civis = ['S', 'C']
+- const sexos = ['M', 'F']
+
+html
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/nav.css')
+    link(rel='stylesheet', type='text/css', href='/css/form.css')
+    link(rel='stylesheet', type='text/css', href='/css/consultas_form.css')
+    script(src='/js/realizar_reserva_step3.js')
+
+  body
+    form(
+      id='form'
+      class='form'
+      method='POST',
+      action='/realizar_reserva/step4'
+    )
+      div(style='align-self: center;')
+        h3=`Voo selecionado: ${voo.NR_VOO} de ${voo.ITR_ROTA_VOO.CD_ARPT_ORIG} para ${voo.ITR_ROTA_VOO.CD_ARPT_DEST} no dia ${voo.DT_SAIDA_VOO} por R$: ${voo.ITR_ROTA_VOO.VR_PASG} `
+
+      input(
+        hidden
+        name='DT_SAIDA_VOO'
+        value=voo.DT_SAIDA_VOO
+      )
+
+      input(
+        hidden
+        name='NR_VOO'
+        value=voo.NR_VOO
+      )
+
+      div(class='form__input-group')
+        label(class='form__input-title') Desconto
+
+        input(
+          class='form__input'
+          type='number'
+          name='PC_DESC_PASG'
+          placeholder='Desconto em %'
+        )
+
+      div(class='form__input-group')
+        label(class='form__input-title') Nome do passageiro
+
+        input(
+          required
+          id='form__input-nome'
+          class='form__input'
+          type='text'
+          name='NM_PSGR'
+          placeholder='Digite o nome'
+          list='lista-passageiros'
+        )
+        datalist(id='lista-passageiros')
+          each passageiro in passageiros
+            option=passageiro.NM_PSGR
+      
+      div(class='form__input-group')
+        label(class='form__input-title') Código
+
+        input(
+          required
+          id='form__input-cod'
+          class='form__input'
+          type='text'
+          name='CD_PSGR'
+          placeholder='Digite o código'
+        )
+
+      
+      div(class='form__input-group')
+        label(class='form__input-title') Sexo
+
+        select(
+          class='form__input'
+          id='form__input-sexo'
+          name='IC_SEXO_PSGR'
+        )
+          each sexo in sexos
+            option(
+                value=sexo
+              )=sexo
+      
+      div(class='form__input-group')
+        label(class='form__input-title') Nascimento
+
+        input(
+          required
+          id='form__input-nascimento'
+          class='form__input'
+          type='text'
+          data-secondary-type='date'
+          name='DT_NASC_PSGR'
+          placeholder='Digite a data de nascimento'
+          onfocus='(this.type="date")'
+          onblur='{this.type="text"}'
+        )
+      
+      div(class='form__input-group')
+        label(class='form__input-title') Pais
+
+        select(
+          class='form__input',
+          id='form__input-pais'
+          name='CD_PAIS',
+        )
+          each pais in paises
+            option(
+              value=pais.CD_PAIS
+            )=`${pais.CD_PAIS} - ${pais.NM_PAIS}`
+
+      div(class='form__input-group')
+        label(class='form__input-title') Estado civíl 
+
+        select(
+          class='form__input'
+          name='IC_ESTD_CIVIL'
+          id='form__input-civil'
+        )
+          each estado_civil in estados_civis
+            option(
+                value=estado_civil
+              )=estado_civil
+
+      div(class='form__input-group')
+        label(class='form__input-title') Responsável
+
+        input(
+          id='form__input-responsavel'
+          class='form__input'
+          type='text'
+          name='CD_PSGR_RESP'
+          placeholder='Digite o código do responsável'
+        )
+
+      div(class='form__buttons')
+        button(
+          class='form_button'
+          onclick='window.history.back()'
+        ) CANCELAR
+
+        button(
+          class='form_button'
+        ) SALVAR

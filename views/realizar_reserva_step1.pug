@@ -1,0 +1,49 @@
+doctype=html
+html
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/consultas_form.css')
+
+  body
+    form(
+      id='form'
+      class='form'
+      method='GET'
+      action='/realizar_reserva/step2'
+    )
+
+      div(class='form__input-group')
+        label(class='form__input-title') Aeroporto de origem
+
+        select(
+          required
+          class='form__input'
+          type='text'
+          name='CD_ARPT_ORIG'
+        ) 
+          option(value='NULL') Indiferente
+          each aeroporto in aeroportos
+            option(value=aeroporto.CD_ARPT)=`${aeroporto.CD_ARPT} - ${aeroporto.NM_CIDD}`
+
+      div(class='form__input-group')
+        label(class='form__input-title') Aeroporto de destino
+
+        select(
+          required
+          class='form__input'
+          type='text'
+          name='CD_ARPT_DEST'
+        )
+          option(value='NULL') Indiferente
+          each aeroporto in aeroportos
+            option(value=aeroporto.CD_ARPT)=`${aeroporto.CD_ARPT} - ${aeroporto.NM_CIDD}`
+
+      div(class='form__buttons')
+        button(
+          class='form_button'
+          onclick='window.history.back()'
+        ) CANCELAR
+
+        button(
+          class='form_button'
+        ) PROXIMO

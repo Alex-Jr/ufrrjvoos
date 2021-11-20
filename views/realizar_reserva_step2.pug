@@ -1,0 +1,32 @@
+doctype=html
+html
+  head
+    include includes/libs.pug
+    link(rel='stylesheet', type='text/css', href='/css/nav.css')
+    link(rel='stylesheet', type='text/css', href='/css/table.css')
+    script(src='/js/consultas.js')
+    script(src='/js/table.js')
+  body
+    include includes/nav.pug
+    div(class='table__title')
+      text(class='table__title-text') Lista de voos
+    table(class='table')
+      tr(class='table__row')
+        th(class='table__header') NR
+        th(class='table__header') Data Saída
+        th(class='table__header') Origem 
+        th(class='table__header') Destino 
+        th(class='table__header') Valor
+        th(class='table__header') Ações
+      each voo in voos 
+        tr(class='table__row')
+          td(class='table__cell')=voo.NR_VOO
+          td(class='table__cell')=voo.DT_SAIDA_VOO
+          td(class='table__cell')=`${voo.ITR_ROTA_VOO.ITR_ARPT_ORIG.CD_ARPT} - ${voo.ITR_ROTA_VOO.ITR_ARPT_ORIG.NM_CIDD}`
+          td(class='table__cell')=`${voo.ITR_ROTA_VOO.ITR_ARPT_DEST.CD_ARPT} - ${voo.ITR_ROTA_VOO.ITR_ARPT_DEST.NM_CIDD}`
+          td(class='table__cell')=`R$: ${voo.ITR_ROTA_VOO.VR_PASG}`
+          td(class='table__cell')
+            button(
+              class='table__title-button'
+              onclick=`window.location.href = '/realizar_reserva/step3?NR_VOO=${voo.NR_VOO}&DT_SAIDA_VOO=${voo.DT_SAIDA_VOO}'`
+            ) SELECIONAR

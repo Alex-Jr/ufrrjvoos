@@ -5,7 +5,7 @@ const basename = path.basename(__filename);
 
 const router = {
   '/': express.Router().get('/', (req, res) => {
-    const routes = ['equipamentos', 'aeronaves', 'companhias aereas', 'voos', 'passageiros',
+    const routes = ['realizar reserva', 'equipamentos', 'aeronaves', 'companhias aereas', 'voos', 'passageiros',
     'paises', 'rotas voos', 'reservas', 'aeroportos', 'ufs', 'consultas companhias',
     'consultas equipamentos', 'consultas clientes', 'consultas voos', 'consultas rotas voos'];
   
