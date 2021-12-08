@@ -1,3 +1,5 @@
+// adiciona um popup quando o form é enviado com sucesso
+// adiciona um evento para preencher o form ao selecionar um nome
 window.addEventListener('load', async () => {
   document.getElementById('form').addEventListener("submit", () => {
     confirm('Reserva feita!')

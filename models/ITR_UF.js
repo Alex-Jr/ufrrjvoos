@@ -1,7 +1,12 @@
+/**
+ * Definição do modelo uf no sequelize
+ */
 'use strict';
+
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class ITR_UF extends Model {
     static associate(models) {

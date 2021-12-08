@@ -1,3 +1,7 @@
+/**
+ * lida com rotas de aeronaves
+ */
+
 const express = require('express');
 const aeronaves = require('../controller/aeronaves');
 const router = express.Router();

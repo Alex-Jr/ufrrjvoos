@@ -1,3 +1,6 @@
+/**
+ * lida com rotas de realizar reserva
+ */
 const express = require('express');
 const realizar_reserva = require('../controller/realizar_reserva');
 const router = express.Router();

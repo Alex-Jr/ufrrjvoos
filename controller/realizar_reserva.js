@@ -1,3 +1,8 @@
+/**
+ * step 1 a 3 são views,
+ * step 4 todos os dados gerados do realizar reserva e efetiva ela
+ * passageiros somente retorna uma lista com todos os passageiros
+ */
 const { fn, col } = require('sequelize')
 const { ITR_VOO, ITR_ROTA_VOO, ITR_ARPT, ITR_PSGR, ITR_PAIS, ITR_RESV } = require('../models'); 
 

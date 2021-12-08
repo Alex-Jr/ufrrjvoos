@@ -1,3 +1,6 @@
+/**
+ * Definição do modelo voo no sequelize
+ */
 'use strict';
 
 const {

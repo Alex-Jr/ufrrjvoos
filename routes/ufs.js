@@ -1,3 +1,6 @@
+/**
+ * lida com rotas de ufs
+ */
 const express = require('express');
 const uf = require('../controller/ufs');
 const router = express.Router();

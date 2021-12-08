@@ -1,3 +1,4 @@
+-- script de criação do banco e os dados
 DROP TABLE IF EXISTS ITR_RESV       ;
 DROP TABLE IF EXISTS ITR_VOO        ;
 DROP TABLE IF EXISTS ITR_PSGR       ;

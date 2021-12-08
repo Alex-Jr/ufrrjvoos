@@ -1,3 +1,6 @@
+/**
+ * lida com rotas de rotas de voos
+ */
 const express = require('express');
 const rotas_voos = require('../controller/rotas_voos');
 const router = express.Router();

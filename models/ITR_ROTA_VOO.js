@@ -1,7 +1,12 @@
+/**
+ * Definição do modelo rota de voo no sequelize
+ */
 'use strict';
+
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class ITR_ROTA_VOO extends Model {
     static associate(models) {

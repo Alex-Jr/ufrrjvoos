@@ -1,7 +1,12 @@
+/**
+ * Definição do modelo equipamento no sequelize
+ */
 'use strict';
+
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class ITR_EQPT extends Model {
     static associate(models) {

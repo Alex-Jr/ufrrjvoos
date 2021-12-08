@@ -1,3 +1,6 @@
+/**
+ * esse arquivo registra todos os modelos e suas relações no sequelize
+ */
 'use strict';
 
 const fs = require('fs');

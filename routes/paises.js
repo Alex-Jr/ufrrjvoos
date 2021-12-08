@@ -1,3 +1,6 @@
+/**
+ * lida com rotas de paises
+ */
 const express = require('express');
 const paises = require('../controller/paises');
 const router = express.Router();

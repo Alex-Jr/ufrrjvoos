@@ -13,6 +13,7 @@ window.addEventListener('load', function () {
   }
 })
 
+// save é a operação para os formulários de crud, valida o form e envia para a rota certa
 async function save(model, id_field, edit, qsParameters) {
   const isEdit = edit === 'true'
   const form = document.forms['form'];

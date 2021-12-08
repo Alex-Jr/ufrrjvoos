@@ -1,3 +1,8 @@
+/**
+ * "list" = retorna uma lista com as consultas disponíveis
+ * "consultaXX" = retorna uma lista com o resultado da consulta
+ * "consultaXX_form" retorna um formulário com os filtros disponíveis
+ */
 const { ITR_PSGR } = require('../models')
 const { Op } = require('sequelize');
 const calcularIdade = require('../utils/calcularIdade');

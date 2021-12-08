@@ -1,3 +1,6 @@
+/**
+ * lida com rotas de consultas de companhias
+ */
 const express = require('express');
 const consultas_companhias = require('../controller/consultas_companhias');
 const router = express.Router();

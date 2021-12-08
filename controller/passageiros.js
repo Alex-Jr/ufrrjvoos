@@ -1,3 +1,7 @@
+/**
+ * funções com "get_" no nome retornam uma view.
+ * funções sem "get_" no nome retornam somente o status
+ */
 const { ITR_PSGR, ITR_PAIS, sequelize  } = require('../models'); 
 
 async function get_list(req, res) {

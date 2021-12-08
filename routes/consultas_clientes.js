@@ -1,3 +1,6 @@
+/**
+ * lida com rotas de consultas de clientes
+ */
 const express = require('express');
 const consultas_clientes = require('../controller/consultas_clientes');
 const router = express.Router();

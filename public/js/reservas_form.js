@@ -1,3 +1,4 @@
+// lida com a seleção de voos por data, realiza o filtro certo
 function handleVooSelect(event) {
   if(!voos) return;
 

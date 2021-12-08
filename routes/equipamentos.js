@@ -1,3 +1,6 @@
+/**
+ * lida com rotas de equipamento
+ */
 const express = require('express');
 const equipamentos = require('../controller/equipamentos');
 const router = express.Router();

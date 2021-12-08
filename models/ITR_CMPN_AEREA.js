@@ -1,7 +1,12 @@
+/**
+ * Definição do modelo companhia aérea no sequelize
+ */
 'use strict';
+
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class ITR_CMPN_AEREA extends Model {
     static associate(models) {

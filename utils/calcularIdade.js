@@ -1,3 +1,4 @@
+// função para calcular a idade apartir da data de nascimento
 module.exports = (dob) => { 
   dob = new Date(dob);
 

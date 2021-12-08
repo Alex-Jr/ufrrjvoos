@@ -13,6 +13,7 @@ window.addEventListener('load', function () {
   }
 })
 
+// valida o form e envia para o backend
 async function consulta69() {
   const form = document.forms['form'];
   const errors = [];

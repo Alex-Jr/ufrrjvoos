@@ -1,3 +1,8 @@
+/**
+ * "list" = retorna uma lista com as consultas disponíveis
+ * "consultaXX" = retorna uma lista com o resultado da consulta
+ * "consultaXX_form" retorna um formulário com os filtros disponíveis
+ */
 const { ITR_CMPN_AEREA, ITR_PAIS, ITR_ARNV, ITR_EQPT } = require('../models')
 const Op = require('sequelize').Op;
 

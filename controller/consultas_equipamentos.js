@@ -1,3 +1,8 @@
+/**
+ * "list" = retorna uma lista com as consultas disponíveis
+ * "consultaXX" = retorna uma lista com o resultado da consulta
+ * "consultaXX_form" retorna um formulário com os filtros disponíveis
+ */
 const { ITR_EQPT } = require('../models')
 const { Op, fn, col } = require('sequelize');
 

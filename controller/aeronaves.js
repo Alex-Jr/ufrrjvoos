@@ -1,3 +1,7 @@
+/**
+ * funções com "get_" no nome retornam uma view.
+ * funções sem "get_" no nome retornam somente o status
+ */
 const { ITR_ARNV,  ITR_EQPT, ITR_CMPN_AEREA } = require('../models'); 
 
 async function get_list(req, res) {

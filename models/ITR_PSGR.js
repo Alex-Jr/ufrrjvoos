@@ -1,7 +1,12 @@
+/**
+ * Definição do modelo passageiro no sequelize
+ */
 'use strict';
+
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class ITR_PSGR extends Model {
     static associate(models) {

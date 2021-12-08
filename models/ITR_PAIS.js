@@ -1,7 +1,12 @@
+/**
+ * Definição do modelo pais no sequelize
+ */
 'use strict';
+
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class ITR_PAIS extends Model {
     static associate(models) {

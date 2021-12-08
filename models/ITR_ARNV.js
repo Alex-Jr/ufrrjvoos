@@ -1,7 +1,12 @@
+/**
+ * Definição do modelo aeronave no sequelize
+ */
 'use strict';
+
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class ITR_ARNV extends Model {
     static associate(models) {

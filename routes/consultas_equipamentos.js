@@ -1,3 +1,6 @@
+/**
+ * lida com rotas de consultas de equipamentos
+ */
 const express = require('express');
 const consultas_equipamentos = require('../controller/consultas_equipamentos');
 const router = express.Router();

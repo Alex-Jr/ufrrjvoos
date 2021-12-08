@@ -1,3 +1,6 @@
+/**
+ * Definição do modelo aeroporto no sequelize
+ */
 'use strict';
 
 const {

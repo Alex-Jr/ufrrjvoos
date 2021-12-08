@@ -1,3 +1,6 @@
+/**
+ * lida com rotas de aeroportos
+ */
 const express = require('express');
 const aeroportos = require('../controller/aeroportos');
 const router = express.Router();

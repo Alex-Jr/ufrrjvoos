@@ -1,3 +1,6 @@
+/**
+ * lida com rotas de companhias aéreas
+ */
 const express = require('express');
 const companhias_aereas = require('../controller/companhias_aereas');
 const router = express.Router();

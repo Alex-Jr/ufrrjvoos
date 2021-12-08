@@ -1,3 +1,4 @@
+// posibilida deletar uma linha
 async function remove(model, value) {
   const url = `/${model}/${value}`;
 

@@ -1,3 +1,4 @@
+// criar iframe para consultas
 async function abrirConsultas(path) {
   const body = document.getElementById('index')
 
@@ -20,6 +21,7 @@ function fecharConsultas() {
   document.getElementById('consultasIframe').remove();
 }
 
+// criar iframe para realizar
 async function abrirRealizar(path) {
   const body = document.getElementById('index')
 

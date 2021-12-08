@@ -1,3 +1,6 @@
+/**
+ * lida com rotas de passageiros
+ */
 const express = require('express');
 const passageiros = require('../controller/passageiros');
 const router = express.Router();

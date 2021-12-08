@@ -1,3 +1,6 @@
+/**
+ * Definição do modelo reserva no sequelize
+ */
 'use strict';
 
 const {
